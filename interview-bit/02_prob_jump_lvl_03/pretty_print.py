@@ -3,7 +3,8 @@ class Solution:
     # @return a list of list of integers
     def prettyPrint(self, A):
         d = (2 * A) - 1
-        M = [[0 for x in range(d)] for x in range(d)]
+        # M = [[0 for x in range(d)] for x in range(d)]
+        M = [x[:] for x in [[0] * d] * d]
 
         count = A
         while (count > 0):
