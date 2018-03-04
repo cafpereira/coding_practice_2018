@@ -1,27 +1,26 @@
 from list_node import *
 
-import heapq
+from queue import PriorityQueue
 
 
 class Solution:
     # @param A : list of linked list
     # @return the head node in the linked list
     def mergeKLists(self, A):
-        heap = []
+        heap = PriorityQueue()
         head = None
         prev = None
 
-        for i, node in enumerate(A):
-            heapq.heappush(heap, (node.val, {'idx': i, 'node': node}))
+        for firstNode in A:
+            heap.put((firstNode.val, firstNode))
 
-        while len(heap) > 0:
-            pop = heapq.heappop(heap)[1]
-            min = pop['node']
+        while not heap.empty():
+            min = heap.get()[1]
             cur = ListNode(min.val)
 
             if min.next:
                 next = min.next
-                heapq.heappush(heap, (next.val, {'idx': pop['idx'], 'node': next}))
+                heap.put((next.val, next))
 
             if not prev:
                 head = cur
