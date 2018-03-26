@@ -8,7 +8,7 @@ class Solution:
         sqrt = int(math.sqrt(A))
 
         if A < 2:
-            return False
+            return 0
 
         for i in range(2, sqrt + 1):
             if A % i == 0:
