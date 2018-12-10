@@ -5,15 +5,14 @@ class Solution:
         start = 0
         end = len(A) - 1
 
-        while end > start:
+        while start < end:
             mid = (start + end) // 2
-            if mid > 0 and A[mid - 1] > A[mid]:
-                return A[mid]
-
-            if A[mid] < A[end]:
-                end = mid - 1
-            else:
+            if A[mid] > A[end]:
+                # Min must be in range [mid+1,end]
                 start = mid + 1
+            else: # A[mid] < A[end]
+                # Min must be in range [start,mid]
+                end = mid
 
         return A[start]
 

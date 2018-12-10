@@ -15,11 +15,11 @@ class Solution:
         start = 0
         end = len(A) - 1
 
-        while (start <= end):
+        while start <= end:
             mid = (start + end) // 2
-            if (A[mid] > val):
+            if A[mid] > val:
                 end = mid - 1
-            else:  # A[mid] < val
+            else:  # A[mid] < val (we know val inputs are not in the array)
                 start = mid + 1
 
         return start
